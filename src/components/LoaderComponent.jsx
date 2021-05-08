@@ -25,9 +25,9 @@ const MeterContainer = styled.div`
   max-width: 100%;
   max-height: 100%;
   flex-direction: row;
-  flex-wrap:wrap;
-  margin-top:0%;
-  padding:0%;
+  flex-wrap: wrap;
+  margin-top: 0%;
+  padding: 0%;
 `;
 
 const LoaderComponent = () => {
@@ -48,7 +48,7 @@ const LoaderComponent = () => {
             setLoad(0)
         }
 
-        return () => time && window.clearInterval(time)
+        return () => time && window.clearTimeout(time)
     }, [values])
 
     return (
