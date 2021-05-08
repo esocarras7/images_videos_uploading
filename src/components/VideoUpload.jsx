@@ -3,6 +3,14 @@ import { Grommet, Box, Text } from 'grommet'
 import ReactPlayer from 'react-player'
 import { grommet } from 'grommet/themes'
 
+import styled from 'styled-components';
+
+const GrommetContainer = styled.div`
+  overflow: auto,
+  padding: 0%, 
+  margin: 0%
+`;
+
 
 const VideoUpload = props => {
 
@@ -28,7 +36,7 @@ const VideoUpload = props => {
     console.log(percentage);
   
     return (
-            
+            <GrommetContainer>
             <Grommet full theme={grommet}>
                 <Box fill align="center" justify="center" >
                     <ReactPlayer
@@ -46,7 +54,7 @@ const VideoUpload = props => {
                     </Box>
                 </Box>
             </Grommet>
-            
+            </GrommetContainer>
         )
 }
 

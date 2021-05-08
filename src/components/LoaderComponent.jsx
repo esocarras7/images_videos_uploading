@@ -25,7 +25,9 @@ const MeterContainer = styled.div`
   max-width: 100%;
   max-height: 100%;
   flex-direction: row;
-  flex-wrap:wrap
+  flex-wrap:wrap;
+  margin-top:0%;
+  padding:0%;
 `;
 
 const LoaderComponent = () => {
