@@ -35,6 +35,19 @@ const LoaderComponent = () => {
     //Defining the state
     const [values, setValues] = useState([])
     const [load, setLoad] = useState(0)
+
+    const cleanName = (rootName) => {
+        let rightName = []
+        for (let i = 0; i < rootName.length; i++) {
+            if(rootName[i] !== '_') {
+                rightName.push(rootName[i])
+            }
+            else {
+                rightName.push(' ')
+            }
+        }
+        return rightName
+    }
     
     useEffect(() => {
         let time = 0
@@ -63,7 +76,7 @@ const LoaderComponent = () => {
 
                         <Box direction="row-responsive" gap="small" >
 
-                        <Text weight="bold">{file.name}</Text>
+                        <Text weight="bold">{cleanName(file.name)}</Text>
 
                         <Text color="text-weak">{Math.round(file.size/1024/1024)} Mb</Text>
 
