@@ -19,6 +19,7 @@ const VideoUpload = props => {
     const [list, setList] = useState(null)
 
     useEffect(() => {
+
         let array = []
 
         for (let i = 0; i < props.videoList.length; i++) {
@@ -34,15 +35,22 @@ const VideoUpload = props => {
   
     return (
             <GrommetContainer>
-            <Grommet full theme={grommet}>
-                <Box fill align="center" justify="center">
+            <Grommet full theme={grommet} >
+                <Box fill align="center" justify="center" gap='small'>
                     <ReactPlayer
                         url={list}
                         playing
                         width={percentage + '%'}
                         height={percentage + '%'}
-                        controls={false}
-                        style={{maxWidth: '100%', maxHeight: '100%', display:'flex', justifyContent:'center'}}
+                        controls={true}
+                        style={{display:'flex', justifyContent:'center'}}
+                        onPlay = {() => {
+                            if(document.getElementsByTagName('video')[0]) {
+                                document.getElementsByTagName('video')[0].style.width = 'auto'
+                                document.getElementsByTagName('video')[0].style.height = 'auto'
+                                document.getElementsByTagName('video')[0].style.overflow = 'auto'
+                            }
+                        }}
                     />       
                     <Box key={7} margin="small">
 
