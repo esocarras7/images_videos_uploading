@@ -61,7 +61,7 @@ const LoaderComponent = () => {
 
                     renderFile={file => (
 
-                        <Box direction="row-responsive" gap="medium" pad='medium'>
+                        <Box direction="row-responsive" gap="small" >
 
                         <Text weight="bold">{file.name}</Text>
 
