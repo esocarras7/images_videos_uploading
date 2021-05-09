@@ -13,7 +13,7 @@ const InputContainer = styled.div`
   max-width: 100%;
   max-height: 100%;
   flex-direction: row;
-  flex-wrap:wrap
+  flex-wrap: wrap;
 `;
 
 const MeterContainer = styled.div`
@@ -61,7 +61,7 @@ const LoaderComponent = () => {
 
                     renderFile={file => (
 
-                        <Box direction="row" gap="medium">
+                        <Box direction="row-responsive" gap="medium" pad='medium'>
 
                         <Text weight="bold">{file.name}</Text>
 

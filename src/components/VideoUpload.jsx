@@ -6,9 +6,9 @@ import { grommet } from 'grommet/themes'
 import styled from 'styled-components';
 
 const GrommetContainer = styled.div`
-  overflow: auto,
-  padding: 0%, 
-  margin: 0%
+  overflow: visible;
+  padding: 0%; 
+  margin: 0%;
 `;
 
 
@@ -31,20 +31,17 @@ const VideoUpload = props => {
         
         
     }, [props.videoList])  
-
-    console.log(props.videoList);
-    console.log(percentage);
   
     return (
             <GrommetContainer>
             <Grommet full theme={grommet}>
-                <Box fill align="center" justify="center" >
+                <Box fill align="center" justify="center">
                     <ReactPlayer
                         url={list}
                         playing
-                        width='auto'
+                        width={percentage + '%'}
                         height={percentage + '%'}
-                        controls={true}
+                        controls={false}
                         style={{maxWidth: '100%', maxHeight: '100%', display:'flex', justifyContent:'center'}}
                     />       
                     <Box key={7} margin="small">
