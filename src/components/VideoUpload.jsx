@@ -29,6 +29,9 @@ const VideoUpload = props => {
             <GrommetContainer>
                 <Grommet full theme={grommet} >
                     <Box fill align="center" justify="center" gap='small'>
+                        <Box key={7} margin='small'>
+                            <Text size={10}>{`Size: ${props.percentage} %`}</Text>
+                        </Box>
                         <ReactPlayer
                             url={list}
                             playing
@@ -45,9 +48,6 @@ const VideoUpload = props => {
                                 }
                             }}
                         />       
-                        <Box key={7} margin="small">
-                            <Text size={10}>{`Size: ${props.percentage} %`}</Text>
-                        </Box>
                     </Box>
                 </Grommet>
             </GrommetContainer>
