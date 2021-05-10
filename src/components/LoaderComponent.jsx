@@ -61,83 +61,56 @@ const LoaderComponent = () => {
         else {
             setLoad(0)
         }
-
         setPercentage(Math.floor(Math.random() * 100))
 
         return () => time && window.clearTimeout(time)
+        
     }, [values])
 
     return (
         <React.Fragment>
             <Grommet full theme={grommet}>
+                <Box fill align="center" justify="start" pad="large">
+                    <InputContainer>
+                        <FileInput
+                            renderFile={file => (
+                                <Box direction="row-responsive" gap="small" >
+                                <Text weight="bold">{cleanName(file.name)}</Text>
+                                <Text color="text-weak">{Math.round(file.size/1024/1024)} Mb</Text>
+                                </Box>
+                            )}
+                            onClick={() => setLoad(0)}
+                            onChange={event => {
+                                const fileList = event.target.files;
+                                let videoList = []
+                                for (let i = 0; i < fileList.length; i += 1) {
+                                    const file = fileList[i];
+                                    videoList.push({src: URL.createObjectURL(file), type: file.type})
+                                }
+                                setValues(videoList)
+                            }}
+                        />
+                    </InputContainer>
 
-            <Box fill align="center" justify="start" pad="large">
-                <InputContainer>
-                    <FileInput
-
-                    renderFile={file => (
-
-                        <Box direction="row-responsive" gap="small" >
-
-                        <Text weight="bold">{cleanName(file.name)}</Text>
-
-                        <Text color="text-weak">{Math.round(file.size/1024/1024)} Mb</Text>
-
+                    <MeterContainer>
+                        <Box align="center" pad="large">
+                            <Meter type="bar" value={load} color='darkorange' />
+                            <Text size={10}>{`${load} %`}</Text>
                         </Box>
+                    </MeterContainer>
 
-                    )}
-
-                    onClick={() => setLoad(0)}
-
-                    onChange={event => {
-
-                        const fileList = event.target.files;
-
-                        let videoList = []
-
-                        for (let i = 0; i < fileList.length; i += 1) {
-
-                            const file = fileList[i];
-
-                            videoList.push({src: URL.createObjectURL(file), type: file.type})
-
+                    <Box align="center" pad="large">
+                        { values.length > 0 
+                        ?
+                            <VideoUpload videoList={values} percentage={percentage} />
+                        :
+                            null
                         }
-
-                        setValues(videoList)
-
-                    }}
-
-                    />
-                </InputContainer>
-
-                <MeterContainer>
-
-                <Box align="center" pad="large">
-
-                    <Meter type="bar" value={load} color='darkorange' />
-
-                    <Text size={10}>{`${load} %`}</Text>
-
+                    </Box>
                 </Box>
-
-                </MeterContainer>
-
-                <Box align="center" pad="large">
-                    { values.length > 0 
-                    ?
-                        <VideoUpload videoList={values} percentage={percentage} />
-                    :
-                        null
-                    }
-
-                </Box>
-
-            </Box>
-
-        </Grommet>
-
+            </Grommet>
         </React.Fragment>
-        )
+    )
 }
 
 export default LoaderComponent
