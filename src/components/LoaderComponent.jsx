@@ -68,48 +68,46 @@ const LoaderComponent = () => {
     }, [values])
 
     return (
-        <React.Fragment>
-            <Grommet full theme={grommet}>
-                <Box fill align="center" justify="start" pad="large">
-                    <InputContainer>
-                        <FileInput
-                            renderFile={file => (
-                                <Box direction="row-responsive" gap="small" >
-                                    <Text weight="bold">{cleanName(file.name)}</Text>
-                                    <Text color="text-weak">{Math.round(file.size/1024/1024)} Mb</Text>
-                                </Box>
-                            )}
-                            onClick={() => setLoad(0)}
-                            onChange={event => {
-                                const fileList = event.target.files;
-                                let videoList = []
-                                for (let i = 0; i < fileList.length; i += 1) {
-                                    const file = fileList[i];
-                                    videoList.push({src: URL.createObjectURL(file), type: file.type})
-                                }
-                                setValues(videoList)
-                            }}
-                        />
-                    </InputContainer>
+        <Grommet full theme={grommet}>
+            <Box fill align="center" justify="start" pad="large">
+                <InputContainer>
+                    <FileInput
+                        renderFile={file => (
+                            <Box direction="row-responsive" gap="small" >
+                                <Text weight="bold">{cleanName(file.name)}</Text>
+                                <Text color="text-weak">{Math.round(file.size/1024/1024)} Mb</Text>
+                            </Box>
+                        )}
+                        onClick={() => setLoad(0)}
+                        onChange={event => {
+                            const fileList = event.target.files;
+                            let videoList = []
+                            for (let i = 0; i < fileList.length; i += 1) {
+                                const file = fileList[i];
+                                videoList.push({src: URL.createObjectURL(file), type: file.type})
+                            }
+                            setValues(videoList)
+                        }}
+                    />
+                </InputContainer>
 
-                    <MeterContainer>
-                        <Box align="center" pad="large">
-                            <Meter type="bar" value={load} color='darkorange' />
-                            <Text size={10}>{`${load} %`}</Text>
-                        </Box>
-                    </MeterContainer>
-
+                <MeterContainer>
                     <Box align="center" pad="large">
-                        { values.length > 0 
-                        ?
-                            <VideoUpload videoList={values} percentage={percentage} />
-                        :
-                            null
-                        }
+                        <Meter type="bar" value={load} color='darkorange' />
+                        <Text size={10}>{`${load} %`}</Text>
                     </Box>
+                </MeterContainer>
+
+                <Box align="center" pad="large">
+                    { values.length > 0 
+                    ?
+                        <VideoUpload videoList={values} percentage={percentage} />
+                    :
+                        null
+                    }
                 </Box>
-            </Grommet>
-        </React.Fragment>
+            </Box>
+        </Grommet>
     )
 }
 
