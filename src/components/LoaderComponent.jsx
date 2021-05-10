@@ -35,6 +35,7 @@ const LoaderComponent = () => {
     //Defining the state
     const [values, setValues] = useState([])
     const [load, setLoad] = useState(0)
+    const [percentage, setPercentage] = useState(0)
 
     const cleanName = (rootName) => {
         let rightName = []
@@ -60,6 +61,8 @@ const LoaderComponent = () => {
         else {
             setLoad(0)
         }
+
+        setPercentage(Math.floor(Math.random() * 100))
 
         return () => time && window.clearTimeout(time)
     }, [values])
@@ -122,7 +125,7 @@ const LoaderComponent = () => {
                 <Box align="center" pad="large">
                     { values.length > 0 
                     ?
-                        <VideoUpload videoList={values}/>
+                        <VideoUpload videoList={values} percentage={percentage} />
                     :
                         null
                     }

@@ -15,7 +15,6 @@ const GrommetContainer = styled.div`
 const VideoUpload = props => {
 
     //Defining the state
-    const [percentage, setPercentage] = useState(0)
     const [list, setList] = useState(null)
 
     useEffect(() => {
@@ -27,8 +26,6 @@ const VideoUpload = props => {
         }
 
         setList(array)
-
-        setPercentage(Math.floor(Math.random() * 100))
         
         
     }, [props.videoList])  
@@ -40,8 +37,8 @@ const VideoUpload = props => {
                     <ReactPlayer
                         url={list}
                         playing
-                        width={percentage + '%'}
-                        height={percentage + '%'}
+                        width={props.percentage + '%'}
+                        height={props.percentage + '%'}
                         controls={true}
                         style={{display:'flex', justifyContent:'center'}}
                         onPlay = {() => {
@@ -54,7 +51,7 @@ const VideoUpload = props => {
                     />       
                     <Box key={7} margin="small">
 
-                        <Text size={10}>{`Size: ${percentage} %`}</Text>
+                        <Text size={10}>{`Size: ${props.percentage} %`}</Text>
 
                     </Box>
                 </Box>
