@@ -41,6 +41,7 @@ const VideoUpload = props => {
                                     document.getElementsByTagName('video')[0].style.width = 'auto'
                                     document.getElementsByTagName('video')[0].style.height = 'auto'
                                     document.getElementsByTagName('video')[0].style.overflow = 'auto'
+                                    document.getElementsByTagName('video')[0].style.marginTop = 'auto'
                                 }
                             }}
                         />       
