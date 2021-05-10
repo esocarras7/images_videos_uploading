@@ -49,11 +49,11 @@ const LoaderComponent = () => {
         }
         return rightName
     }
-    
+
     useEffect(() => {
         let time = 0
         if(values.length > 0) {
-            setLoad(50)
+            setLoad(Math.floor(Math.random() * 100))
             time = window.setTimeout(() => {
                 setLoad(100)
             }, 700)
@@ -62,7 +62,7 @@ const LoaderComponent = () => {
             setLoad(0)
         }
         setPercentage(Math.floor(Math.random() * 100))
-
+        
         return () => time && window.clearTimeout(time)
         
     }, [values])
