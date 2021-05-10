@@ -75,8 +75,8 @@ const LoaderComponent = () => {
                         <FileInput
                             renderFile={file => (
                                 <Box direction="row-responsive" gap="small" >
-                                <Text weight="bold">{cleanName(file.name)}</Text>
-                                <Text color="text-weak">{Math.round(file.size/1024/1024)} Mb</Text>
+                                    <Text weight="bold">{cleanName(file.name)}</Text>
+                                    <Text color="text-weak">{Math.round(file.size/1024/1024)} Mb</Text>
                                 </Box>
                             )}
                             onClick={() => setLoad(0)}
